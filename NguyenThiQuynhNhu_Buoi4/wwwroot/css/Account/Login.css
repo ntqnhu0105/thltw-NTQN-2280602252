@@ -1,0 +1,54 @@
+﻿body {
+    background-color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+h1, h2, h3 {
+    color: #0044cc;
+}
+
+.card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+    .card:hover {
+        transform: scale(1.02);
+    }
+
+.form-floating input {
+    border: 2px solid #0044cc;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+    .form-floating input:focus {
+        border-color: #002a80;
+        box-shadow: 0 0 10px rgba(0, 68, 204, 0.5);
+    }
+
+button[type="submit"],
+button.btn-primary {
+    background-color: #0066ff;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+    button[type="submit"]:hover,
+    button.btn-primary:hover {
+        background-color: #0044cc;
+        transform: scale(1.05);
+    }
+
+.text-danger {
+    color: #cc0000;
+    font-weight: bold;
+}

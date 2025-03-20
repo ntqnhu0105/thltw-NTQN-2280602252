@@ -1,0 +1,64 @@
+﻿body {
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+    .card:hover {
+        transform: scale(1.02);
+    }
+
+h2 {
+    color: #00aaff;
+}
+
+.text-danger {
+    font-size: 1.2em;
+    color: #ff4b5c;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ddd;
+}
+
+.btn-secondary {
+    background-color: #00aaff;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+    .btn-secondary:hover {
+        background-color: #0088cc;
+    }
+
+.product-image {
+    max-width: 100%;
+    border: 3px solid #00aaff;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .product-image:hover {
+        transform: scale(1.1);
+    }

@@ -1,0 +1,128 @@
+﻿/* Định dạng chung */
+body {
+    background: linear-gradient(to right, #002244, #0056b3); /* Gradient xanh biển đậm giống Index */
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 20px;
+}
+
+/* Card Container */
+.card {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow giống Index */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    background: #007bff; /* Màu nền giống thead trong Index */
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+    .card-header h2 {
+        color: white; /* Màu chữ trắng giống Index */
+        text-align: center;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 1.75rem;
+    }
+
+.card-body {
+    padding: 20px;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 15px; /* Khoảng cách giống Index */
+}
+
+.form-label {
+    font-weight: bold;
+    color: #007bff; /* Màu giống nút trong Index */
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control, .form-select {
+    width: 100%;
+    padding: 10px; /* Padding lớn hơn một chút cho dễ nhập */
+    border: 1px solid #ddd; /* Viền giống bảng trong Index */
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+    .form-control:focus, .form-select:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Hiệu ứng giống ảnh trong Index */
+        outline: none;
+    }
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-control[type="file"] {
+    padding: 6px; /* Điều chỉnh cho input file */
+}
+
+/* Validation Feedback */
+.text-danger {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #dc3545; /* Màu đỏ giống nút Delete trong Index */
+}
+
+/* Button */
+.btn-primary {
+    padding: 10px 15px;
+    background: #007bff; /* Màu giống btn-view trong Index */
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+    .btn-primary:hover {
+        background: #0056b3; /* Màu đậm hơn khi hover */
+        transform: translateY(-3px); /* Hiệu ứng nâng giống btn-custom trong Index */
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Shadow giống Index */
+        opacity: 0.9;
+    }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        max-width: 100%;
+        margin: 0 10px;
+    }
+
+    .card-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .form-control, .form-select {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .btn-primary {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}

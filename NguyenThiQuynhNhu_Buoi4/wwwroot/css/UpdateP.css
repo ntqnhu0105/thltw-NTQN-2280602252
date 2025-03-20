@@ -1,0 +1,149 @@
+﻿body {
+    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px; /* Increased width for better form layout */
+    margin: 40px auto;
+    padding: 0; /* Removed padding since product-card handles it */
+}
+
+.product-card {
+    background: #ffffff;
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.product-title {
+    color: #0056b3;
+    font-size: 1.8em; /* Slightly larger for emphasis */
+    font-weight: 600;
+    margin-bottom: 20px; /* Increased spacing */
+}
+
+.form-label {
+    font-weight: 600;
+    color: #222;
+    display: block;
+    margin-bottom: 8px; /* Slightly more spacing */
+}
+
+.form-control {
+    border: 2px solid #0056b3;
+    border-radius: 8px;
+    padding: 10px 15px;
+    width: 100%;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Added for consistent sizing */
+}
+
+    .form-control:focus {
+        border-color: #003f7f;
+        box-shadow: 0 0 8px rgba(0, 63, 127, 0.3);
+        outline: none;
+    }
+
+/* Specific styling for textarea */
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Specific styling for select */
+select.form-control {
+    appearance: none; /* Remove default arrow */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%230056b3" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>') no-repeat right 15px center;
+    background-size: 12px;
+    padding-right: 35px; /* Space for custom arrow */
+}
+
+.product-image {
+    width: 150px; /* Slightly larger for better visibility */
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #0056b3;
+    border-radius: 12px;
+    margin: 15px auto;
+    display: block;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px; /* Consistent button width */
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #0056b3, #003f7f);
+        transform: translateY(-2px); /* Subtle lift effect */
+        box-shadow: 0 4px 12px rgba(0, 87, 178, 0.3);
+    }
+
+.btn-secondary {
+    background: #6c757d;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px; /* Consistent button width */
+}
+
+    .btn-secondary:hover {
+        background: #5a6268;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+    }
+
+    /* Button icon spacing */
+    .btn-primary i,
+    .btn-secondary i {
+        margin-right: 8px;
+    }
+
+.text-danger {
+    font-size: 14px;
+    font-weight: 500;
+    color: #dc3545;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .product-card {
+        padding: 20px;
+    }
+
+    .product-title {
+        font-size: 1.5em;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 10px 20px;
+        width: 100%; /* Full width on mobile */
+        margin: 5px 0; /* Stack buttons */
+    }
+
+    .product-image {
+        width: 120px;
+        height: 120px;
+    }
+}
