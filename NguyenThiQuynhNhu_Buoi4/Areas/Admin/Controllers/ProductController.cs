@@ -7,7 +7,7 @@ using NguyenThiQuynhNhu_Buoi4.Repositories;
 namespace NguyenThiQuynhNhu_Buoi4.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = SD.Role_Admin)]
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductRepository _productRepository;
@@ -18,12 +18,15 @@ namespace NguyenThiQuynhNhu_Buoi4.Areas.Admin.Controllers
             _categoryRepository = categoryRepository;
         }
         // Hiển thị danh sách sản phẩm
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var products = await _productRepository.GetAllAsync();
             return View(products);
         }
         // Hiển thị form thêm sản phẩm mới
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         public async Task<IActionResult> Add()
         {
             try
@@ -72,6 +75,7 @@ namespace NguyenThiQuynhNhu_Buoi4.Areas.Admin.Controllers
             return "/images/" + image.FileName; // Trả về đường dẫn tương đối
         }
         // Hiển thị thông tin chi tiết sản phẩm
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee + "," + SD.Role_Customer)]
         public async Task<IActionResult> Display(int id)
         {
             var product = await _productRepository.GetByIdAsync(id);
@@ -82,6 +86,7 @@ namespace NguyenThiQuynhNhu_Buoi4.Areas.Admin.Controllers
             return View(product);
         }
         // Hiển thị form cập nhật sản phẩm
+        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         public async Task<IActionResult> Update(int id)
         {
             var product = await _productRepository.GetByIdAsync(id);
@@ -133,6 +138,7 @@ namespace NguyenThiQuynhNhu_Buoi4.Areas.Admin.Controllers
             return View(product);
         }
         // Hiển thị form xác nhận xóa sản phẩm
+        [Authorize(Roles = SD.Role_Admin)]
         public async Task<IActionResult> Delete(int id)
         {
             var product = await _productRepository.GetByIdAsync(id);

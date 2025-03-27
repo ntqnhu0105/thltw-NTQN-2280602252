@@ -1,0 +1,15 @@
+﻿@model int
+@{
+    ViewData["Title"] = "Order Completed";
+}
+
+<div class="order-container">
+    <div class="success-icon">✓</div>
+    <h2>Order Completed</h2>
+    <p>Đơn hàng có ID <span class="order-id">@Model</span> đã được đặt thành công!!!</p>
+    <a href="@Url.Action("Index", "Home")" class="back-button">Back to Home</a>
+</div>
+
+@section Styles {
+        <link rel="stylesheet" href="~/css/ShoppingCart/OrderCompleted.css" />
+}

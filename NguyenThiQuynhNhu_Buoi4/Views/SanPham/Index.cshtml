@@ -1,0 +1,60 @@
+﻿@model IEnumerable<NguyenThiQuynhNhu_Buoi4.Models.Product>
+
+@{
+    ViewData["Title"] = "Home Page";
+    int numOfQuantity = 1;
+
+    // Hàm định dạng tiền Việt Nam inline
+    string FormatVnd(decimal amount)
+    {
+        return amount.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) + " VNĐ";
+    }
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/SanPham/Index.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+}
+
+@section Scripts {
+    <script src="~/js/SanPham/Index.js" asp-append-version="true"></script>
+}
+
+<section class="product-section py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <h2 class="section-title text-center mb-5 animate__animated animate__fadeIn">
+            <i class="fas fa-shopping-basket me-2"></i> Sản Phẩm
+        </h2>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            @foreach (var item in Model)
+            {
+                <div class="col mb-5">
+                    <div class="card product-card shadow-lg animate__animated animate__fadeInUp">
+                        <div class="product-image">
+                            <img src="@item.ImageUrl" class="card-img-top" alt="@item.Name" />
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title product-name">@item.Name</h5>
+                            <div class="price-info">
+                                <span class="price-label">Giá:</span>
+                                <span class="price-value">@FormatVnd(item.Price)</span>
+                            </div>
+                            <a asp-controller="ShoppingCart" asp-action="AddToCart"
+                               asp-route-productId="@item.Id" asp-route-quantity="@numOfQuantity"
+                               class="btn btn-primary btn-add-to-cart">
+                                <i class="fas fa-cart-plus me-1"></i> Thêm vào giỏ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @if (!Model.Any())
+        {
+            <div class="empty-products text-center animate__animated animate__bounceIn">
+                <i class="fas fa-box-open fa-4x text-muted mb-3"></i>
+                <p class="empty-message">Hiện tại chưa có sản phẩm nào!</p>
+            </div>
+        }
+    </div>
+</section>

@@ -1,0 +1,231 @@
+﻿/* Order Detail Wrapper */
+.order-detail-wrapper {
+    background: linear-gradient(to bottom, #e6f0ff, #f5faff);
+    padding: 30px 0;
+    min-height: 100vh;
+}
+
+/* Order Detail Container */
+.order-detail-container {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif; /* Font hỗ trợ tiếng Việt */
+}
+
+/* Order Detail Title */
+.order-detail-title {
+    color: #003087;
+    font-weight: 800;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+.card-header {
+    padding: 15px 20px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.bg-primary {
+    background: linear-gradient(90deg, #0056b3, #007bff);
+}
+
+.bg-success {
+    background: linear-gradient(90deg, #28a745, #34c759);
+}
+
+.bg-info {
+    background: linear-gradient(90deg, #17a2b8, #00c4cc);
+}
+
+.card-body {
+    padding: 25px;
+    background: #f9fafb;
+    border-radius: 0 0 12px 12px;
+}
+
+/* Info List */
+.info-list {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 15px;
+}
+
+    .info-list dt {
+        font-weight: 600;
+        color: #1a3c6d;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .info-list dd {
+        margin: 0;
+        color: #333;
+        font-size: 1.1rem;
+        font-weight: 500;
+        background: #fff;
+        padding: 8px 12px;
+        border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+/* Order Items Table */
+.order-items-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-header th {
+    background: linear-gradient(90deg, #17a2b8, #00c4cc);
+    color: white;
+    padding: 15px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.order-item td {
+    padding: 20px;
+    vertical-align: middle;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 1rem;
+    color: #444;
+}
+
+.order-item:hover {
+    background: rgba(0, 123, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+.quantity {
+    font-weight: 600;
+    color: #e67e22;
+}
+
+.price, .total-item {
+    color: #007bff;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Order Summary */
+.order-summary {
+    padding: 20px;
+    background: linear-gradient(135deg, #e9f5ff, #f0f9ff);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-size: 1.3rem;
+}
+
+.total-label {
+    margin: 0;
+    color: #1a3c6d;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.total-amount {
+    color: #dc3545;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Back Button */
+.btn-custom {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 2px solid #003087;
+    color: #003087;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+    .btn-custom:hover {
+        background: #003087;
+        color: white;
+        border-color: #003087;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-custom i {
+        transition: transform 0.3s ease;
+    }
+
+    .btn-custom:hover i {
+        transform: translateX(-5px);
+    }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .order-detail-container {
+        padding: 20px;
+    }
+
+    .order-detail-title {
+        font-size: 1.8rem;
+    }
+
+    .info-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .card-header {
+        font-size: 1.2rem;
+    }
+
+    .order-item td {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .order-summary {
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    .total-label {
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .total-amount {
+        font-size: 1.3rem;
+    }
+
+    .btn-custom {
+        width: 100%;
+        padding: 10px;
+    }
+}

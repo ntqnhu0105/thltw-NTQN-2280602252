@@ -1,0 +1,92 @@
+﻿@model ShoppingCart
+
+@{
+    // Hàm định dạng tiền Việt Nam inline
+    string FormatVnd(decimal amount)
+    {
+        return amount.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) + " VNĐ";
+    }
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/ShoppingCart/Cart.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+}
+
+@section Scripts {
+    <script src="~/js/ShoppingCart/Cart.js" asp-append-version="true"></script>
+}
+
+<div class="cart-wrapper">
+    <div class="cart-container animate__animated animate__fadeIn">
+        <h2 class="cart-title"><i class="fas fa-shopping-cart me-2"></i> Giỏ Hàng Của Bạn</h2>
+
+        @if (Model.Items.Any())
+        {
+            <div class="cart-summary-bar">
+                <p>Tổng sản phẩm: <span class="badge bg-primary">@Model.Items.Sum(i => i.Quantity)</span></p>
+                <p>Tổng tiền: <span class="total-all fw-bold">@FormatVnd(Model.Items.Sum(i => i.Price * i.Quantity))</span></p>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table cart-table shadow-lg">
+                    <thead class="table-header">
+                        <tr>
+                            <th><i class="fas fa-list-ol me-1"></i> STT</th>
+                            <th><i class="fas fa-box me-1"></i> Sản phẩm</th>
+                            <th><i class="fas fa-sort-numeric-up me-1"></i> Số lượng</th>
+                            <th><i class="fas fa-tag me-1"></i> Đơn giá</th>
+                            <th><i class="fas fa-money-bill-wave me-1"></i> Tổng</th>
+                            <th><i class="fas fa-cogs me-1"></i> Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var (item, index) in Model.Items.Select((value, i) => (value, i)))
+                        {
+                            <tr class="cart-item animate__animated animate__fadeInUp" data-price="@item.Price">
+                                <td class="text-center">@(index + 1)</td>
+                                <td class="product-name">@item.Name</td>
+                                <td>
+                                    <form asp-action="UpdateQuantity" method="post" class="quantity-form">
+                                        <input type="hidden" name="productId" value="@item.ProductId" />
+                                        <div class="quantity-control">
+                                            <button type="button" class="btn btn-outline-dark btn-sm qty-decrease">-</button>
+                                            <input type="number" name="quantity" value="@item.Quantity" min="1" class="form-control quantity-input" />
+                                            <button type="button" class="btn btn-outline-dark btn-sm qty-increase">+</button>
+                                        </div>
+                                    </form>
+                                </td>
+                                <td class="price">@FormatVnd(item.Price)</td>
+                                <td class="total">@FormatVnd(item.Price * item.Quantity)</td>
+                                <td class="text-center">
+                                    <a asp-action="RemoveFromCart" asp-route-productId="@item.ProductId" class="btn btn-danger btn-sm remove-btn">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cart-actions d-flex justify-content-between mt-5">
+                <a asp-controller="SanPham" asp-action="Index" class="btn btn-outline-secondary btn-custom back-btn">
+                    <i class="fas fa-arrow-left me-2"></i> Tiếp tục mua sắm
+                </a>
+                <a asp-action="Checkout" class="btn btn-success btn-custom checkout-btn">
+                    Thanh toán ngay <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="empty-cart text-center animate__animated animate__bounceIn">
+                <i class="fas fa-shopping-cart fa-5x text-muted mb-4"></i>
+                <p class="empty-message">Giỏ hàng của bạn đang trống!</p>
+                <a asp-controller="SanPham" asp-action="Index" class="btn btn-primary btn-custom shop-now-btn mt-3">
+                    <i class="fas fa-shopping-bag me-2"></i> Mua sắm ngay
+                </a>
+            </div>
+        }
+    </div>
+</div>

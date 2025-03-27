@@ -1,0 +1,62 @@
+﻿
+.order-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+    .card:hover {
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+.card-header {
+    background: linear-gradient(45deg, #007bff, #00b4db);
+    color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
+}
+
+.dl-horizontal dt {
+    font-weight: 600;
+    color: #444;
+}
+
+.dl-horizontal dd {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.table {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    .table thead {
+        background: #f8f9fa;
+        color: #333;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+        padding: 15px;
+    }
+
+.btn-custom {
+    padding: 10px 25px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+    .btn-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+

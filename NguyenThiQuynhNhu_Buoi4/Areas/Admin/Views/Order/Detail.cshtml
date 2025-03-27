@@ -1,0 +1,111 @@
+﻿@model NguyenThiQuynhNhu_Buoi4.Models.Order
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // Hàm định dạng tiền Việt Nam inline
+    string FormatVnd(decimal amount)
+    {
+        return amount.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) + " VNĐ";
+    }
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Admin/OrderDetails.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+}
+
+<div class="order-detail-wrapper">
+    <div class="order-detail-container animate__animated animate__fadeIn">
+        <h2 class="order-detail-title"><i class="fas fa-file-invoice me-2"></i> Chi Tiết Đơn Hàng #@Model.Id</h2>
+
+        <!-- Thông Tin Khách Hàng -->
+        <div class="card shadow-lg mb-5">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-user me-2"></i> Thông Tin Khách Hàng</h4>
+            </div>
+            <div class="card-body bg-light">
+                <dl class="info-list">
+                    <dt><i class="fas fa-user-circle me-1"></i> Tên khách hàng:</dt>
+                    <dd class="info-value">@Model.ApplicationUser?.FullName</dd>
+                    <dt><i class="fas fa-envelope me-1"></i> Email:</dt>
+                    <dd class="info-value">@Model.ApplicationUser?.Email</dd>
+                    <dt><i class="fas fa-phone me-1"></i> Số điện thoại:</dt>
+                    <dd class="info-value">@(Model.ApplicationUser?.PhoneNumber ?? "Chưa cung cấp")</dd>
+                </dl>
+            </div>
+        </div>
+
+        <!-- Thông Tin Đặt Hàng -->
+        <div class="card shadow-lg mb-5">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0"><i class="fas fa-shopping-bag me-2"></i> Thông Tin Đặt Hàng</h4>
+            </div>
+            <div class="card-body bg-light">
+                <dl class="info-list">
+                    <dt><i class="fas fa-hashtag me-1"></i> Mã đơn hàng:</dt>
+                    <dd class="info-value">#@Model.Id</dd>
+                    <dt><i class="fas fa-calendar-alt me-1"></i> Ngày đặt:</dt>
+                    <dd class="info-value">@Model.OrderDate.ToString("dd/MM/yyyy HH:mm")</dd>
+                    <dt><i class="fas fa-map-marker-alt me-1"></i> Địa chỉ giao:</dt>
+                    <dd class="info-value">@Model.ShippingAddress</dd>
+                    <dt><i class="fas fa-sticky-note me-1"></i> Ghi chú:</dt>
+                    <dd class="info-value">@(string.IsNullOrEmpty(Model.Notes) ? "Không có" : Model.Notes)</dd>
+                </dl>
+            </div>
+        </div>
+
+        <!-- Sản Phẩm Đặt Hàng -->
+        <div class="card shadow-lg mb-5">
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0"><i class="fas fa-boxes me-2"></i> Sản Phẩm Đặt Hàng</h4>
+            </div>
+            <div class="card-body p-0">
+                <table class="table order-items-table mb-0">
+                    <thead class="table-header">
+                        <tr>
+                            <th><i class="fas fa-box me-1"></i> Tên sản phẩm</th>
+                            <th class="text-center"><i class="fas fa-sort-numeric-up me-1"></i> Số lượng</th>
+                            <th class="text-right"><i class="fas fa-tag me-1"></i> Đơn giá</th>
+                            <th class="text-right"><i class="fas fa-money-bill-wave me-1"></i> Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.OrderDetails != null)
+                        {
+                            @foreach (var item in Model.OrderDetails)
+                            {
+                                <tr class="order-item animate__animated animate__fadeInUp">
+                                    <td>@item.Product?.Name</td>
+                                    <td class="text-center quantity">@item.Quantity</td>
+                                    <td class="text-right price">@FormatVnd(item.Price)</td>
+                                    <td class="text-right total-item">@FormatVnd(item.Quantity * item.Price)</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tổng tiền sản phẩm -->
+        <div class="order-summary text-end animate__animated animate__bounceIn">
+            <p class="total-label"><i class="fas fa-wallet me-2"></i> Tổng tiền sản phẩm: 
+                <span class="total-amount fw-bold">
+                    @(Model.OrderDetails != null ? FormatVnd(Model.OrderDetails.Sum(item => item.Quantity * item.Price)) : "0 VNĐ")
+                </span>
+            </p>
+        </div>
+
+        <div class="text-center mt-4">
+            <a asp-area="Admin" asp-controller="Order" asp-action="Index" class="btn btn-outline-secondary btn-custom back-btn">
+                <i class="fas fa-arrow-left me-2"></i> Quay lại
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

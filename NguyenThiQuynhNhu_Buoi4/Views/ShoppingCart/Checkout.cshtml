@@ -1,0 +1,106 @@
+﻿@model NguyenThiQuynhNhu_Buoi4.Models.Order
+
+@{
+    // Hàm định dạng tiền Việt Nam inline
+    string FormatVnd(decimal amount)
+    {
+        return amount.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) + " VNĐ";
+    }
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/ShoppingCart/Checkout.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $('form').on('submit', function (e) {
+                if ($(this).valid()) {
+                    console.log("Form valid, submitting...");
+                } else {
+                    console.log("Form invalid:", $(this).validate().errorList);
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+}
+
+<div class="checkout-wrapper">
+    <div class="checkout-container animate__animated animate__fadeIn">
+        <h2 class="checkout-title"><i class="fas fa-credit-card me-2"></i> Thanh Toán Đơn Hàng</h2>
+
+        <div class="row">
+            <!-- Thông tin thanh toán -->
+            <div class="col-lg-6 mb-4">
+                <form asp-action="Checkout" method="post" class="checkout-form shadow-lg">
+                    <h4 class="section-title"><i class="fas fa-user me-2"></i> Thông Tin Giao Hàng</h4>
+                    <div class="form-group mb-4">
+                        <label class="form-label">Họ và tên</label>
+                        <input type="text" value="@Model.ApplicationUser?.FullName" class="form-control checkout-input" readonly />
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-label">Email</label>
+                        <input type="email" value="@Model.ApplicationUser?.Email" class="form-control checkout-input" readonly />
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-label">Địa chỉ giao hàng</label>
+                        <input type="text" asp-for="ShippingAddress" class="form-control checkout-input" placeholder="Nhập địa chỉ giao hàng" required />
+                        <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-label">Ghi chú</label>
+                        <textarea asp-for="Notes" class="form-control checkout-textarea" rows="4" placeholder="Ghi chú thêm (nếu có)"></textarea>
+                        <span asp-validation-for="Notes" class="text-danger"></span>
+                    </div>
+
+                    <div class="checkout-actions text-center mt-5">
+                        <button type="submit" class="btn btn-primary checkout-btn">
+                            <i class="fas fa-check me-2"></i> Xác nhận thanh toán
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Tóm tắt đơn hàng -->
+            <div class="col-lg-6 mb-4">
+                <div class="order-summary shadow-lg">
+                    <h4 class="section-title"><i class="fas fa-shopping-bag me-2"></i> Tóm Tắt Đơn Hàng</h4>
+                    @if (Model.OrderDetails != null && Model.OrderDetails.Any())
+                    {
+                        <ul class="order-items list-unstyled">
+                            @foreach (var item in Model.OrderDetails)
+                            {
+                                <li class="order-item d-flex justify-content-between align-items-center">
+                                    <span class="item-name">@(item.Product?.Name ?? $"Sản phẩm ID: {item.ProductId}")</span>
+                                    <span class="item-details">
+                                        @item.Quantity x @FormatVnd(item.Price) = <strong>@FormatVnd(item.Price * item.Quantity)</strong>
+                                    </span>
+                                </li>
+                            }
+                        </ul>
+                        <hr />
+                        <div class="total-summary text-end">
+                            <p class="total-label">Tổng tiền: 
+                                <span class="total-amount fw-bold">@FormatVnd(Model.TotalPrice)</span>
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted text-center">Không có sản phẩm trong đơn hàng.</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a asp-controller="ShoppingCart" asp-action="Index" class="btn btn-outline-secondary back-btn">
+                <i class="fas fa-arrow-left me-2"></i> Quay lại giỏ hàng
+            </a>
+        </div>
+    </div>
+</div>

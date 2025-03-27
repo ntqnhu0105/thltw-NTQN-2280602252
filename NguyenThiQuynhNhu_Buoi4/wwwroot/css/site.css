@@ -1,132 +1,126 @@
-﻿/* Định dạng chung */
+﻿/* Global Styles */
 body {
-    background: linear-gradient(to right, #002244, #0056b3); /* Gradient xanh biển đậm giống Index */
+    background: linear-gradient(to right, #002244, #0056b3);
     font-family: Arial, sans-serif;
     color: #333;
     margin: 20px;
 }
 
-/* Navbar */
+/* Navbar Styles */
 .navbar {
-    background: linear-gradient(90deg, #004085, #002d62); /* Gradient xanh đậm hơn */
+    background: linear-gradient(90deg, #004085, #002d62);
     padding: 1rem 1.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow giống bảng trong Index */
-    border-bottom: none; /* Tắt viền dưới nếu không cần */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-brand {
     font-size: 1.5rem;
-    transition: all 0.3s ease-in-out;
     padding: 0.5rem 1rem;
     border-radius: 5px;
+    transition: all 0.3s ease-in-out;
 }
 
 .text-black-shadow {
-    color: #000000; /* Màu đen đậm */
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5); /* Bóng trắng nhẹ để nổi bật */
+    color: #000000;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .navbar-brand:hover {
-    color: #333333 !important; /* Đen nhạt hơn khi hover */
-    background: rgba(0, 123, 255, 0.2); /* Hiệu ứng nền mờ giống tbody tr:hover trong Index */
-    text-shadow: 0 2px 6px rgba(255, 255, 255, 0.7); /* Bóng mạnh hơn */
+    color: #333333 !important;
+    background: rgba(0, 123, 255, 0.2);
+    text-shadow: 0 2px 6px rgba(255, 255, 255, 0.7);
 }
 
 .nav-link {
     font-size: 1.1rem;
     padding: 0.5rem 1rem;
-    color: white; /* Màu trắng giống thead trong Index */
+    color: white;
     transition: all 0.3s ease-in-out;
-    border: none; /* Tắt khung */
 }
 
     .nav-link:hover {
         color: #e9ecef !important;
-        background: rgba(0, 123, 255, 0.2); /* Hiệu ứng hover giống tbody trong Index */
-        border-radius: 0; /* Tắt bo góc để không giống khung */
+        background: rgba(0, 123, 255, 0.2);
     }
 
-/* Nav-item ở góc phải (ví dụ: Login/Logout) */
 .navbar-nav .nav-item-right {
-    margin-left: auto; /* Đẩy sang phải */
+    margin-left: auto;
 }
 
     .navbar-nav .nav-item-right .nav-link {
-        color: #ffd700; /* Màu vàng nhạt nổi bật */
+        color: #ffd700;
         font-weight: bold;
-        background: rgba(255, 215, 0, 0.1); /* Nền vàng mờ nhẹ */
+        background: rgba(255, 215, 0, 0.1);
         padding: 0.5rem 1.2rem;
         transition: all 0.3s ease-in-out;
-        border: none; /* Tắt khung */
     }
 
         .navbar-nav .nav-item-right .nav-link:hover {
-            color: #ffeb3b; /* Vàng sáng hơn khi hover */
-            background: rgba(255, 215, 0, 0.3); /* Nền vàng đậm hơn */
-            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.5); /* Bóng vàng nhẹ */
-            border-radius: 0; /* Tắt bo góc để không giống khung */
+            color: #ffeb3b;
+            background: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.5);
         }
 
 .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Buttons */
+/* Button Styles */
 .btn-primary {
     padding: 10px 15px;
-    background: #007bff; /* Màu giống btn-view trong Index */
+    background: #007bff;
     border: none;
     border-radius: 6px;
     color: white;
     cursor: pointer;
     font-size: 14px;
-    transition: all 0.3s ease-in-out;
-    min-width: 90px;
     font-weight: bold;
+    min-width: 90px;
+    transition: all 0.3s ease-in-out;
 }
 
     .btn-primary:hover {
-        background: #0056b3; /* Màu đậm hơn khi hover */
-        transform: translateY(-3px); /* Hiệu ứng nâng giống btn-custom trong Index */
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Shadow giống Index */
+        background: #0056b3;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
         opacity: 0.9;
     }
 
-/* Main Container */
+/* Layout Styles */
 .container {
     max-width: 1200px;
 }
 
 main {
-    background: white; /* Nền trắng giống bảng trong Index */
+    background: white;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow giống bảng trong Index */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
 }
 
-/* Footer */
+/* Footer Styles */
 .footer {
-    background: white; /* Nền trắng giống bảng trong Index */
-    border-top: 1px solid #ddd; /* Viền giống bảng trong Index */
+    background: white;
+    border-top: 1px solid #ddd;
     padding: 20px 0;
     margin-top: 40px;
     font-size: 0.9rem;
-    color: #333; /* Màu chữ giống body trong Index */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow giống bảng trong Index */
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
     .footer a {
-        color: #007bff; /* Màu giống nút trong Index */
+        color: #007bff;
         text-decoration: none;
         transition: all 0.3s ease-in-out;
     }
 
         .footer a:hover {
-            color: #0056b3; /* Màu đậm hơn khi hover */
+            color: #0056b3;
         }
 
-/* Responsive Adjustments */
+/* Responsive Design */
 @media (max-width: 768px) {
     .navbar-brand {
         font-size: 1.25rem;
